@@ -1,97 +1,21 @@
-/* Since we aren't using a templating system right now, I'll just mention the main colors here: 
+/* We can use these color classes provided by Materialize.css
 
-Pink: #ED7A9E
-Dark Gray: #4A4A4A
-Light Gray: #9B9B9B
+Pink: red lighten-1
+Light Gray: gray
 
 */
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    color: #4A4A4A;
-}
-input[type="text"] {
-    background-color: none;
-    border: none;
-    border-bottom: 3px solid #ED7A9E;
-}
-input[type="text"]:hover {
-    outline: none;
-}
-
 /* STRUCTURE */ 
-#header {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 65px;
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-    color: white;
-    background-color: #ED7A9E;
-    box-shadow: 0px 5px 7px #AAA;
-    z-index: 9999;
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 #main {
-    display: block;
-    position: relative;
-    height: calc(100%-65px);
-    width: 100%;
-    margin-top: 65px;
-    padding: 30px;
-    background-color: white;
-    overflow-y: auto;
-}
-#footer-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background-color: rgba(255,255,255,0.9);
-    border-top: solid 5px #ED7A9E;
-    z-index: 9998;
-}
-
-
-
-/* UTIL */ 
-.pink {
-    background-color: #ED7A9E;
-}
-.green {
-    background-color: #40db60;
-}
-.pink-text {
-    color: #ED7A9E;
-}
-.green-text {
-    color: #40db60;
-}
-.horiz {
-    white-space: nowrap;
-    width: 100%;
-    overflow-x: auto
+    padding: 20px;
 }
 
 /* CLASSES */ 
-.card {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    height: 30%;
-    box-shadow: -3px 3px 10px #AAA;
-    background-color: white;
-    transition: 0.3s;
-}
-.card:hover {
-    box-shadow: -3px 3px 20px #999;
-    cursor: pointer;
-}
-
 
 /* /biz-page */
 
