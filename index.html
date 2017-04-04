@@ -1,32 +1,39 @@
-<DOCTYPE! html>
-<!-- DESCRIPTION: Main page (NOT login). Has the main list of projects. --> 
+<!DOCTYPE html>
+<!-- DESCRIPTION: Main page (NOT login). Has the main list of projects. -->
 <html>
-    <head> 
-        <title>CARNATION</title>
-        <!-- FONTS --> 
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet"><!-- ROBOTO -->
-        <!-- CSS --> 
-        <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
-        <link rel="stylesheet" href="css/main.css" type="text/css">
 
-        <!-- JS -->
-        <script src="js/materialize.min.js"></script>
-        <script src="js/main.js"></script>
+<head>
+  <title>Wot 'n' Carnation</title>
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    </head>
-    <body>
-        <div id="header"></div>
-        <div id="main">
-            <h4>YOUR BUSINESS</h4>
-            <br>
-            <input type="text" placeholder="Search term here..."></input>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-        </div>
-        <div id="footer-nav">
-            <div class="col s6"></div>
-            <div class="col s6"></div>
-        </div>
-    </body>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <div id="main" class="container">
+    <form>
+      <div class="input field">
+        <input placeholder="Username" id="first_name" type="text" class="validate">
+      </div>
+      <div class="input field">
+        <input placeholder="Password" id="first_name" type="text" class="validate">
+      </div>
+    </form>
+    <a href="home-page.html" class="waves-effect waves-light red lighten-1 btn">Log In</a>
+  </div>
+</body>
+
 </html>
