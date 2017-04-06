@@ -44,3 +44,9 @@ body {
 .sector img{
     height: calc(100%-20px)
 }
+
+.parallax-container {
+    height: 300px;
+ }
+
+ 
