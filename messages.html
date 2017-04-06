@@ -31,9 +31,6 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="project-page.html">Project</a></li>
       </ul>
-      <a href="home-page.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red darken-2">
-        <i class="material-icons">arrow_back</i>
-      </a>
       <ul id="slide-out" class="side-nav">
         <li>
           <div class="userView">
@@ -55,9 +52,105 @@
     </div>
   </nav>
 
+  <a class="waves-effect waves-light btn" href="#modal2" onclick="$('#modal1').modal('open');">New Message</a>
 
-  <div id="main" class="container">
+
+  <!--List of messages-->
+  <ul id ="messages" class="collection">
+    <li class="collection-item avatar">
+      <img src="img/zeerak.jpg" alt="" class="circle">
+      <span class="title">Zeerak</span>
+      <p>Hi there! My name is Zeerak. I'm the founder of XYZ. Thank you so much for reaching out! Let me know when you're free for a quick chat!!!</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/mehdi.jpg" alt="" class="circle">
+      <span class="title">Mehdi</span>
+      <p>Hi there! My name is Mehdi. I'm the founder of XYZ. Thank you so much for reaching out! Let me know when you're free for a quick chat!!!</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/shuya.jpg" alt="" class="circle">
+      <span class="title">Shuya</span>
+      <p>Hi! I'm really interested in your business. Would love to chat!</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/humph.jpg" alt="" class="circle">
+      <span class="title">Humphrey</span>
+      <p>Hello hello hello. I'm humph and I love black and white</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/larry.jpg" alt="" class="circle">
+      <span class="title">Larry</span>
+      <p>Hi there! My name is Larry. I'm the founder of XYZ. Thank you so much for reaching out! Let me know when you're free for a quick chat!!!</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/zeerak.jpg" alt="" class="circle">
+      <span class="title">Ofra</span>
+      <p>Hello hello hello. Reach out!</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/shuya.jpg" alt="" class="circle">
+      <span class="title">Evan</span>
+      <p>First Line lliirtdrtddrttddrtFirst Line lliirtdrtddrttddrt</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/mehdi.jpg" alt="" class="circle">
+      <span class="title">Micah</span>
+      <p>First Line lliirtdrtddrttddrtFirst Line lliirtdrtddrttddrt</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/larry.jpg" alt="" class="circle">
+      <span class="title">Nick</span>
+      <p>First Line lliirtdrtddrttddrtFirst Line lliirtdrtddrttddrt</p>
+    </li>
+    <li class="collection-item avatar">
+      <img src="img/zeerak.jpg" alt="" class="circle">
+      <span class="title">Amy</span>
+      <p>First Line lliirtdrtddrttddrtFirst Line lliirtdrtddrttddrt</p>
+    </li>
+  </ul>
+
+  <!-- Message composer -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <nav class="red">
+        <div class="nav-wrapper">
+          <div class="left col s12 m5 l5">
+            <ul>
+              <li><a href="messages.html" class="email-menu"><i class="material-icons">replay</i></a>
+              </li>
+              <li><a href="messages.html" class="email-type">SEND</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="model-email-content">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="to_email" type="email" class="validate">
+              <label for="to_email">To</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="subject" type="text" class="validate">
+              <label for="subject">Subject Line</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="compose" class="materialize-textarea" length="500"></textarea>
+              <label for="compose">Compose email</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
+
 </body>
 
 </html>
