@@ -4,7 +4,9 @@ $(document).ready(function () {
     $(".button-collapse").sideNav({
         draggable: true
     });
-
   	$('.modal').modal();
 
+    $('.parallax').parallax();
+
 });
+
