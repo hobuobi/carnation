@@ -5,3 +5,7 @@ $(document).ready(function () {
         draggable: true
     });
 });
+
+$(document).ready(function(){
+    $('.parallax').parallax();
+});
