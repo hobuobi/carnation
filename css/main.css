@@ -15,38 +15,4 @@ body {
     padding: 20px;
 }
 
-/* CLASSES */ 
-
-/* /biz-page */
-
-#cover-photo {
-    display: inline-block;
-    width: calc(100% + 60px);
-    height: 30%;
-    margin: -30px;
-    margin-bottom: 15px;
-    background-image: -webkit-linear-gradient(-270deg, rgba(174, 255, 252, 1) 0%, rgba(251, 140, 255, 1) 100%);
-    background-image: -moz-linear-gradient(-270deg, rgba(174, 255, 252, 1) 0%, rgba(251, 140, 255, 1) 100%);
-    background-image: -o-linear-gradient(-270deg, rgba(174, 255, 252, 1) 0%, rgba(251, 140, 255, 1) 100%);
-    background-image: linear-gradient(-270deg, rgba(174, 255, 252, 1) 0%, rgba(251, 140, 255, 1) 100%);
-}
-
-.sector {
-    display: inline-block;
-    height: 74px;
-    width: 74px;
-    border-radius: 37px;
-    border: solid 3px #ED7A9E;
-    padding: 10px;
-    margin: 0px 10px;
-    vertical-align: top;
-}
-.sector img{
-    height: calc(100%-20px)
-}
-
-.parallax-container {
-    height: 300px;
- }
-
- 
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }

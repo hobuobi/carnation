@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- DESCRIPTION: Main page (NOT login). Has the main list of projects. -->
+<!-- DESCRIPTION: Project page. View a project's details. -->
 <html>
 
 <head>
@@ -11,6 +11,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
   <link rel="stylesheet" href="css/main.css" type="text/css">
+  <link rel="stylesheet" href="css/custom.css" type="text/css">
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,10 +27,13 @@
   <!--Nav and hamburger menu-->
   <nav class="red lighten-1">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Carnation</a>
+      <a href="#" class="brand-logo">Soccer Coaching</a>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      <a href="new-project.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red darken-2">
-        <i class="material-icons">add</i>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="project-page.html">Project</a></li>
+      </ul>
+      <a href="home-page.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red darken-2">
+        <i class="material-icons">arrow_back</i>
       </a>
       <ul id="slide-out" class="side-nav">
         <li>
@@ -54,54 +58,27 @@
     </div>
   </nav>
 
-
-  <div id="main" class="container">
-    <!--Own Projects-->
-    <h5 class="red-text text-accent-4">Your projects</h1>
-    <ul class="collection">
-      <li class="collection-item avatar">
-        <i class="material-icons circle green">attach_money</i>
-        <span class="title">New dishwasher</span>
-        <p class="grey-text">36% funded</p>
-        <a href="#!" class="secondary-content"><i class="material-icons md-dark">grade</i></a>
-      </li>
-    </ul>
-
-    <!--Feed-->
-    <h5 class="red-text text-accent-4">Hot Projects</h5>
-    <form>
-      <div class="input-field">
-        <input class="grey-text" id="search" type="search" required>
-        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        <i class="material-icons">close</i>
-      </div>
-    </form>
-    <div class="row">
-      <div class="col s12 m6">
-        <div class="card">
-          <div class="card-image">
-            <img src="img/soccercoaching.jpg">
-            <span class="card-title">Soccer Coaching</span>
-            <a href="project-page.html" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">keyboard_arrow_right</i></a>
-          </div>
-          <div class="card-content">
-            <p>MW 3-5PM, MAC Quad</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m6">
-        <div class="card">
-          <div class="card-image">
-            <img src="img/bakery.jpg">
-            <span class="card-title">Vegan Bakery</span>
-            <a href="project-page2.html" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">keyboard_arrow_right</i></a>
-          </div>
-          <div class="card-content">
-            <p>$50/month for infrastructure.</p>
-          </div>
-        </div>
+  <div id="main" class="parallax-container">
+    <div class="parallax"><img src="img/bakery.jpg"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Vegan Bakery</h2>
+      <h5 class="header"><i class="material-icons">today</i>MW 3-4PM</h5>
+      <p class="grey-text text-darken-3 lighten-3">This Vegan Bakery requires a bit more funding to purchase a new oven!</p>
+      <!--FAB-->
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-small red">
+          <i class="large material-icons">add</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating yellow darken-1"><i class="material-icons">report_problem</i></a></li>
+          <li><a class="btn-floating green"><i class="material-icons">settings</i></a></li>
+          <li><a class="btn-floating red"><i class="material-icons">alarm_add</i></a></li>
+        </ul>
       </div>
     </div>
+  </div>
   </div>
 </body>
 

@@ -45,18 +45,50 @@
             <a href="#!email"><span class="white-text email">zeerakahmed@gmail.com</span></a>
           </div>
         </li>
-        <li><a href="messages.html"><i class="material-icons">message</i>Messages</a></li>
-        <li><a href="#!"><i class="material-icons">group</i>Friends</a></li>
+        <li><a href="home-page.html"><i class="material-icons">list</i>Projects</a></li>
         <li>
-          <div class="divider"></div>
-        </li>
-        <li><a class="waves-effect" href="#!">Settings</a></li>
+          <li><a href="messages.html"><i class="material-icons">message</i>Messages</a></li>
+          <li><a href="#!"><i class="material-icons">group</i>Friends</a></li>
+          <li>
+            <div class="divider"></div>
+          </li>
+          <li><a class="waves-effect" href="#!">Settings</a></li>
       </ul>
     </div>
   </nav>
 
-
+  <!--Main-->
   <div id="main" class="container">
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn red darken-2">
+          <span>Upload</span>
+          <input type="file" multiple>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="project-name" type="text" class="validate">
+        <label for="project-name">Project Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="description" class="materialize-textarea validate"></textarea>
+        <label for="description">Project Description</label>
+      </div>
+    </div>
+    <p>Tags</p>
+    <div class="chips chips-autocomplete"></div>
+    <a href="home-page.html">
+      <button class="btn red darken-2 waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+      </button>
+    </a>
   </div>
 </body>
 
