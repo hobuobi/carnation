@@ -1,4 +1,37 @@
+var projectList = 
+    [
+        {
+            "id": "soccer",
+            "title": "Soccer Coaching",
+            "description": "Franklin High School's soccer team is doing great this year thanks to your help! Your assistance coaching is for sure getting them into the championships!"
+        },
+        {
+            "id": "vegan",
+            "title": "Vegan Bakery",
+            "description": "This Vegan Bakery requires a bit more funding to purchase a new oven!"
+        }
+    ]
+function query(str){
+        return function(obj){
+            return obj.title.includes(str) || obj.description.includes(str);
+        }
+    }
 $(document).ready(function () {
+
+    
+    $("#search").keyup(function(){
+        $(".card").css("display","none");
+        if($(this).val() == "")
+            $(".card").css("display","inline-block")
+        else{
+            var searches = projectList.filter(query($(this).val()));
+            for(item in searches){
+                $("#"+item.id).css("display","inline-block")
+            }
+            console.log("searches");
+        }
+            
+    })
     $(".button-collapse").sideNav();
 
     $(".button-collapse").sideNav({
