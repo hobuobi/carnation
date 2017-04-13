@@ -11,6 +11,7 @@ var projectList =
             "description": "This Vegan Bakery requires a bit more funding to purchase a new oven!"
         }
     ]
+var searches = []
 function query(str){
         return function(obj){
             return obj.title.includes(str) || obj.description.includes(str);
@@ -24,11 +25,11 @@ $(document).ready(function () {
         if($(this).val() == "")
             $(".card").css("display","inline-block")
         else{
-            var searches = projectList.filter(query($(this).val()));
-            for(item in searches){
-                $("#"+item.id).css("display","inline-block")
+            searches = projectList.filter(query($(this).val()));
+            for(var item in searches){
+                $("#"+searches[item].id).css("display","inline-block")
             }
-            console.log("searches");
+            console.log(searches);
         }
             
     })
