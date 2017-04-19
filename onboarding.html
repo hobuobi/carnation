@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- DESCRIPTION: Main page (NOT login). Has the main list of projects. -->
+<html>
+
+<head>
+  <title>Wot 'n' Carnation</title>
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <!--Nav and hamburger menu-->
+  <nav class="red lighten-1">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Carnation</a>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a id="new-project" class="pulse btn-floating btn-large halfway-fab waves-effect waves-light red accent-1">
+        <i class="material-icons">add</i>
+      </a>
+      <ul id="slide-out" class="side-nav">
+        <li>
+          <div class="userView">
+            <div class="background">
+              <img src="img/wallpaper.jpg">
+            </div>
+            <a href="#!user"><img class="circle" src="img/zeerak.jpg"></a>
+            <a href="#!name"><span class="white-text name">Zeerak</span></a>
+            <a href="#!email"><span class="white-text email">zeerakahmed@gmail.com</span></a>
+          </div>
+        </li>
+        <li><a href="home-page.html"><i class="material-icons">list</i>Projects</a></li>
+        <li><a class="waves-effect" href="#!">Settings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main" class="container">
+    <!--Own Projects-->
+    <h5 class="red-text text-accent-1">Your projects</h1>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="img/flower.gif">
+              <a id="own-project" class="pulse btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title">One of your projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Feed-->
+      <h5 class="red-text text-accent-1">Hot Projects</h5>
+      <form>
+        <div class="input-field">
+          <input class="grey-text" id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+      <div class="row" id="projects">
+        <div class="col s12 m6">
+          <div class="card" id="soccer">
+            <div class="card-image">
+              <img src="img/soccercoaching.jpg">
+              <span class="card-title">Soccer Coaching</span>
+              <a class="project-example pulse btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
+            </div>
+            <div class="card-content">
+              <p>MW 3-5PM, MAC Quad</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card" id="vegan">
+            <div class="card-image">
+              <img src="img/bakery.jpg">
+              <span class="card-title">Vegan Bakery</span>
+              <a class="project-example pulse btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
+            </div>
+            <div class="card-content">
+              <p>$50/month for infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="home-page.html" class="btn waves-effect waves-light red accent-2">Leave Onboarding</a>
+  </div>
+
+  <!-- Tutorial Modals -->
+  <div id="intro-modal" class="modal">
+    <div class="modal-content">
+      <h4>Thanks for joining!</h4>
+      <p>Here's a quick tutorial to get you started.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="home-page.html" class="modal-action modal-close waves-effect waves-red btn-flat">Skip</a>
+      <a href="#!" class="modal-action modal-close waves-effect btn red accent-1">Start</a>
+    </div>
+  </div>
+  <div id="new-project-modal" class="modal">
+    <div class="modal-content">
+      <h4>New projects</h4>
+      <p>Click this button to add a new project you'd like to share with others!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect btn red accent-1">Okay</a>
+    </div>
+  </div>
+  <div id="project-example-modal" class="modal">
+    <div class="modal-content">
+      <h4>Explore projects</h4>
+      <p>Explore small businesses in your area, connect with small business owners, potentially invest in a small business,
+        or simply volunteer your time!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect btn red accent-1">Okay</a>
+    </div>
+  </div>
+  <div id="own-project-modal" class="modal">
+    <div class="modal-content">
+      <h4>Your own projects</h4>
+      <p>View the progress of your own projects, see who's interested and respond to questions.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect btn red accent-1">Okay</a>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('.modal').modal();
+      $('#intro-modal').modal('open');
+      $('#new-project').click(function () {
+        $('#new-project-modal').modal('open');
+      });
+      $('.project-example').click(function () {
+        $('#project-example-modal').modal('open');
+      });
+      $('#own-project').click(function () {
+        $('#own-project-modal').modal('open');
+      });
+    });
+  </script>
+</body>
+
+</html>
