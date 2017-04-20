@@ -93,14 +93,19 @@
     }
 
     previewFile();  //calls the function named previewFile()
-
+    var _tags = []
+    
     $('#submit').click(function () {
+      $.each($(".chip"), function(index,val){
+        var txt = val.textContent;
+        _tags.push(txt.substring(0,txt.length-5)); //gets rid of the extra 'close' text at the end...
+      })
       var newProject = {
         name: $("#project-name").val(),
         description: $("#description").val(),
         valuation: $("#valuation").val(),
         available: $("#available").val(),
-        tags: $("#tags").val()
+        tags: _tags
       };
 
       if (localStorage.projects) {
