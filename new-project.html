@@ -70,7 +70,7 @@
       </div>
     </div>
     <a href="home-page.html">
-      <button class="btn red accent-1 waves-effect waves-light" type="submit" name="action">Submit
+      <button id="submit" class="btn red accent-1 waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
       </button>
     </a>
@@ -93,6 +93,27 @@
     }
 
     previewFile();  //calls the function named previewFile()
+
+    $('#submit').click(function () {
+      var newProject = {
+        name: $("#project-name").val(),
+        description: $("#description").val(),
+        valuation: $("#valuation").val(),
+        available: $("#available").val(),
+        tags: $("#tags").val()
+      };
+
+      if (localStorage.projects) {
+        projects = JSON.parse(localStorage.projects);
+      }
+      else {
+        projects = [];
+      };
+
+      projects.push(newProject);
+
+      localStorage.projects = JSON.stringify(projects);
+    });
   </script>
 </body>
 
