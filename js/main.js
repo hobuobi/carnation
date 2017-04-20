@@ -47,7 +47,11 @@ $(document).ready(function () {
             data: {
                 'Sports': null,
                 'Fashion': null,
-                'Hospitality': null
+                'Hospitality': null,
+                'Arts': null,
+                'Food': null,
+                'Non-Profit': null,
+                'Corporate': null
             },
             limit: Infinity,
             minLength: 1
