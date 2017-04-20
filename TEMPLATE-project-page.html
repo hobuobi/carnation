@@ -34,6 +34,7 @@
   </nav>
 
   <div id="cover-photo" class="parallax-container">
+
     <div class="parallax"><img src="img/wallpaper.jpg"></div>
   </div>
   <div class="section white">
@@ -93,26 +94,27 @@
     </div>
   </div>
   <script>
-  var projects = JSON.parse(localStorage.projects)
-  var id = localStorage.id
-  function loadInfo() {
-    proj = projects[parseInt(searchById(projects, parseInt(id)))]
-    $("#name").text(proj.name)
-    $("#available").text(proj.available)
-    $("#valuation").text(proj.valuation)
-    $("#description").text(proj.description)
-  }
-  function searchById(arr, id) {
-    result = -1;
-    for (i in arr) {
-      console.log(arr[i].id)
-      if (arr[i].id == id) {
-        result = i
-      }
+    var projects = JSON.parse(localStorage.projects)
+    var id = localStorage.id
+    function loadInfo() {
+      proj = projects[parseInt(searchById(projects, parseInt(id)))]
+      $("#name").text(proj.name)
+      $("#available").text(proj.available)
+      $("#valuation").text(proj.valuation)
+      $("#description").text(proj.description)
     }
-    return result
-  }
-</script>
+    function searchById(arr, id) {
+      result = -1;
+      for (i in arr) {
+        console.log(arr[i].id)
+        if (arr[i].id == id) {
+          result = i
+        }
+      }
+      return result
+    }
+
+  </script>
 
   <script>
     $(document).ready(function () {
