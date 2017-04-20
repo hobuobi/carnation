@@ -1,11 +1,10 @@
 /* We can use these color classes provided by Materialize.css
 
 Pink: red lighten-1
-Light Gray: gray
+Buttons: red accent-1
+Light Gray: grey
 
 */
-
-/* STRUCTURE */ 
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -14,9 +13,7 @@ body {
 #main {
     padding: 20px;
 }
-#cover-photo {
-    height: 200px;
-}
+
 .footer {
     position: fixed;
     bottom: 0;
