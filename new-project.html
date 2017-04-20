@@ -34,18 +34,13 @@
   </nav>
 
   <!--Main-->
+  <div class="row">
+    <br>
+    <label id="upload-project-pic" for="profile-picture" class="btn red accent-1 col s4 offset-s4">Upload a picture</label>
+    <input type="file" style="visibility: hidden;" id="profile-picture" onchange="previewFile()">
+    <img class="col s6 offset-s3" src="" height="200px" width="300px">
+  </div>
   <div id="main" class="container">
-    <form action="#">
-      <div class="file-field input-field">
-        <div class="btn red accent-1">
-          <span>Upload</span>
-          <input type="file" multiple>
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Upload one or more files">
-        </div>
-      </div>
-    </form>
     <div class="row">
       <div class="input-field col s6">
         <input id="project-name" type="text" class="validate">
@@ -58,14 +53,47 @@
         <label for="description">Project Description</label>
       </div>
     </div>
-    <p>Tags</p>
-    <div class="chips chips-autocomplete"></div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="valuation" type="text" class="validate">
+        <label for="valuation">Valuation</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="available" type="text" class="validate">
+        <label for="available">Percent available to investors</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <div id="tags" class="chips chips-autocomplete"></div>
+        <label for="tags">Tags</label>
+      </div>
+    </div>
     <a href="home-page.html">
       <button class="btn red accent-1 waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
       </button>
     </a>
   </div>
+  <script>
+    function previewFile() {
+      var preview = document.querySelector('img'); //selects the query named img
+      var file = document.querySelector('input[type=file]').files[0]; //sames as here
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        preview.src = reader.result;
+      }
+
+      if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+      } else {
+        preview.src = "";
+      }
+    }
+
+    previewFile();  //calls the function named previewFile()
+  </script>
 </body>
 
 </html>
