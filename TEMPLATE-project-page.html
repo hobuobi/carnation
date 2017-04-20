@@ -34,13 +34,15 @@
   </nav>
 
   <div id="cover-photo" class="parallax-container">
-
     <div class="parallax"><img src="img/wallpaper.jpg"></div>
   </div>
   <div class="section white">
     <div class="row container">
       <h4 id="name" class="header red-text lighten-1">{{ NAME }}</h4>
       <h5 class="header"><span id="available" class="green-text"><b>{{ available }}</b></span> of <span id="valuation" class="green-text lighten-1">${{ valuation }} valuation</span></h5>
+      <div id="tags">
+        <span>TAGS:</span>
+      </div>
       <p id="description" class="grey-text text-darken-3 lighten-3">{{ DESCRIPTION }}</p>
       <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
       <ul class="collection">
@@ -102,6 +104,9 @@
       $("#available").text(proj.available)
       $("#valuation").text(proj.valuation)
       $("#description").text(proj.description)
+      $.each(proj.tags, function(index,val){
+        $("#tags").append("<span class='tag white-text red lighten-1'>"+val+"</span>")
+      })
     }
     function searchById(arr, id) {
       result = -1;
