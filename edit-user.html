@@ -52,9 +52,16 @@
     </div>
   </div>
   <div class="container">
-    <a id="sign-up" href="onboarding.html" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">arrow_forward</i></a>
+    <a id="save-profile" href="home-page.html" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">arrow_forward</i></a>
   </div>
   <script>
+    $(document).ready(function () {
+      if (localStorage.profile) {
+        var profile = JSON.parse(localStorage.profile);
+        $('#name').val(profile.name);
+        $('#phone').val(profile.phone)
+      }
+    });
     function previewFile() {
       var preview = document.querySelector('img'); //selects the query named img
       var file = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -72,7 +79,7 @@
     }
 
     previewFile();  //calls the function named previewFile()
-    $("#sign-up").click(function () {
+    $("#save-profile").click(function () {
       var profile = {
         name: $("#name").val(),
         phone: $('#phone').val()
