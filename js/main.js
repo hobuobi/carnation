@@ -1,4 +1,4 @@
-var projectList = 
+var projectList =
     [
         {
             "id": "soccer",
@@ -12,50 +12,50 @@ var projectList =
         }
     ]
 var searches = []
-function query(str){
-        return function(obj){
-            return obj.title.includes(str) || obj.description.includes(str);
-        }
+function query(str) {
+    return function (obj) {
+        return obj.title.includes(str) || obj.description.includes(str);
     }
+}
 $(document).ready(function () {
 
-    
-    $("#search").keyup(function(){
-        $(".card").css("display","none");
-        if($(this).val() == "")
-            $(".card").css("display","inline-block")
-        else{
+    $("#search").keyup(function () {
+        $(".card").css("display", "none");
+        if ($(this).val() == "")
+            $(".card").css("display", "inline-block")
+        else {
             searches = projectList.filter(query($(this).val()));
-            for(var item in searches){
-                $("#"+searches[item].id).css("display","inline-block")
+            for (var item in searches) {
+                $("#" + searches[item].id).css("display", "inline-block")
             }
             console.log(searches);
         }
-            
-    })
-    $(".button-collapse").sideNav();
 
-    $(".button-collapse").sideNav({
-        draggable: true
-    });
-  	$('.modal').modal();
+    })
+    // $(".button-collapse").sideNav();
+
+    // $(".button-collapse").sideNav({
+    //     draggable: true
+    // });
 
     $('.parallax').parallax();
 
-    $('.chips-autocomplete').material_chip({
-        autocompleteOptions: {
-            data: {
-                'Sports': null,
-                'Fashion': null,
-                'Hospitality': null,
-                'Arts': null,
-                'Food': null,
-                'Non-Profit': null,
-                'Corporate': null
-            },
-            limit: Infinity,
-            minLength: 1
-        }
-    });
+    $('.chips').material_chip();
+
+    // $('.chips-autocomplete').material_chip({
+    //     autocompleteOptions: {
+    //         data: {
+    //             'Sports': null,
+    //             'Fashion': null,
+    //             'Hospitality': null,
+    //             'Arts': null,
+    //             'Food': null,
+    //             'Non-Profit': null,
+    //             'Corporate': null
+    //         },
+    //         limit: Infinity,
+    //         minLength: 1
+    //     }
+    // });
 });
 

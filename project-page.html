@@ -39,7 +39,7 @@
   <div class="section white">
     <div class="row container">
       <h4 class="header red-text lighten-1">Krista's Soccer Camp</h4>
-      <h5 class="header"><span class="green-text"><b>10% available</b></span><span class="green-text lighten-1"> of $150,000 valuation</span></h5>
+      <span class="green-text"><h5><b>11% ($16,500)</b> stake available</h5></span>
       <p><i class="material-icons">location_on</i>23 Main Street, Wilmington, AZ</p>
       <p class="grey-text text-darken-3 lighten-3">Krista's Soccer Camp has been educating and engaging the communities youth of all ages and genders for almost 15 years.
         Every year we run programs for around 300 athletes in the area. We are looking for investors to help us expand geographically
@@ -54,7 +54,7 @@
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle green accent-2">attach_money</i>
-          <span class="title">LUCIFER</span>
+          <span class="title">RANDOLPH</span>
           <p>took a <b>1%</b> stake in this company!</p>
           <a class="grey-text secondary-content">3/13/17</a>
         </li>
@@ -68,12 +68,50 @@
     </div>
   </div>
   <div class="footer">
-    <a href="fund-project.html">
-      <button class="btn red darken-2 waves-effect waves-light accent-1 col s12" type="submit" name="fund" id="fund">INVEST
+    <button class="btn red darken-2 waves-effect waves-light accent-1 col s12" type="submit" name="fund" id="fund">INVEST
       <i class="material-icons right"></i>
       </button>
-    </a>
   </div>
+
+  <div id="fund-modal" class="modal">
+    <div class="modal-content">
+      <p>What stake of the company are you interested in?</p>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="project-name" type="text" class="validate">
+          <label for="project-name">E.g. 10%</label>
+        </div>
+      </div>
+      <p>What skills/experiences can you bring to the team as a coach?</p>
+      <div class="row">
+        <div class="input-field col s12">
+          <div id="tags" class="chips chips-autocomplete"></div>
+          <label for="tags">Skills</label>
+        </div>
+      </div>
+      </form>
+      <p> Would you like to say anything else to the project owner?</p>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="description" class="materialize-textarea validate"></textarea>
+          <label for="description">Message</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <a class="col s12 btn teal lighten-3 waves-effect waves-light" id="mailLink">Contact Company<i class="material-icons right">send</i></a>
+        <a class="col s12 btn red accent-1 waves-effect waves-light" type="submit" name="action">Submit your funding request<i class="material-icons right">attach_money</i></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $('.modal').modal();
+    $('#fund').click(function () {
+      $('#fund-modal').modal('open');
+    });
+  </script>
 </body>
 
 </html>

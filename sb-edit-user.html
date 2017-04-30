@@ -31,7 +31,7 @@
   <div class="container center">
     <div class="row">
       <br>
-      <img width="100%" src="img/zeerak.jpg">
+      <img width="100%" src="img/vegan-bakery.jpg">
       <label id="upload-propic" for="profile-picture" class="btn red lighten-2 col s4 offset-s4">Change Picture</label>
       <!--<input type="file" style="visibility: hidden;" id="profile-picture" onchange="previewFile()">
       <img class="col s6 offset-s3" src="" height="200px" width="300px">-->
@@ -39,36 +39,54 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
-        <input id="name" value="Zeerak Ahmed" type="text" class="validate">
-        <label id="name-label" for="name">Name</label>
+        <input id="name" value="Auntie Karen's Vegan Bakery" type="text" class="validate">
+        <label id="name-label" for="name">Name of Business</label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input id="email" value="karenherself@auntiek.com" type="email" class="validate">
+        <label id="email-label" for="email">E-Mail address</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">phone</i>
-        <input id="phone" value="(866) 232-2315" type="tel" class="validate">
+        <input id="phone" value="(508) 617-2341" type="tel" class="validate">
         <label id="phone-label" for="phone">Telephone</label>
       </div>
-    </div>
-    <div style="text-align: left;" class="input-field col s12">
-      <i class="material-icons prefix">label</i>
-      <div id="tags" class="chips">
-        <div id="tags-html"></div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">edit_location</i>
+        <input id="loc" value="1396 East Main Street, Westworld, AK" type="tel" class="validate">
+        <label id="loc-label" for="loc">Location</label>
       </div>
-      <label id="tags-label" for="tags">Knowledge tags</label>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">mode_comment</i>
+        <textarea id="desc" class="materialize-textarea"></textarea>
+        <label id="desc-label" for="desc">Description</label>
+      </div>
+      <div style="text-align: left;" class="input-field col s12">
+        <i class="material-icons prefix">label</i>
+        <div id="tags" class="chips">
+          <div id="tags-html"></div>
+        </div>
+        <label id="tags-label" for="tags">Tags</label>
+      </div>
     </div>
   </div>
   <div class="container">
-    <a id="save-profile" href="home-page.html" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">arrow_forward</i></a>
+    <a id="save-profile" href="sb-home-page.html" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">arrow_forward</i></a>
   </div>
   <script>
     $(document).ready(function () {
-      if (localStorage.profile) {
-        var profile = JSON.parse(localStorage.profile);
-        $('#name').val(profile.name);
-        $('#phone').val(profile.phone);
+      if (localStorage.smallbiz) {
+        var smallbiz = JSON.parse(localStorage.smallbiz);
+        $('#name').val(smallbiz.name);
+        $('#phone').val(smallbiz.phone);
+        $('#email').val(smallbiz.email);
+        $('#loc').val(smallbiz.loc);
+        $('#desc').val(smallbiz.desc);
         var tags = '';
-        $.each(profile.tags, function (index, val) {
+        $.each(smallbiz.tags, function (index, val) {
           tags += '<div class="chip">' + val + '<i class="material-icons close">close</i></div>';
         });
         tags += '<input id="' + $('#tags-label').attr('for') + '" class="input" placeholder>';
@@ -78,7 +96,6 @@
     });
 
     $("#save-profile").click(function () {
-
       var _tags = [];
 
       $.each($(".chip"), function (index, val) {
@@ -86,12 +103,16 @@
         _tags.push(txt.substring(0, txt.length - 5)); //gets rid of the extra 'close' text at the end...
       })
 
-      var profile = {
+      var smallbiz = {
         name: $("#name").val(),
         phone: $('#phone').val(),
+        email: $('#email').val(),
+        loc: $('#loc').val(),
+        desc: $('#desc').val(),
         tags: _tags
       }
-      localStorage.profile = JSON.stringify(profile)
+
+      localStorage.smallbiz = JSON.stringify(smallbiz);
     });
 
     // function previewFile() {

@@ -24,14 +24,15 @@
 
 <body>
   <!--Nav and hamburger menu-->
-  <nav class="red lighten-1">
+  <nav class="nav-extended red lighten-1">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Carnation</a>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">person</i></a>
-      <a href="new-project.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-1">
+      <!--<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">person</i></a>-->
+      <a href="edit-user.html" class="button-collapse"><i class="material-icons">person</i></a>
+      <!--<a href="new-project.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-1">
         <i class="material-icons">add</i>
-      </a>
-      <ul id="slide-out" class="side-nav">
+      </a>-->
+      <!--<ul id="slide-out" class="side-nav">
         <li>
           <div class="userView">
             <div class="background">
@@ -42,73 +43,102 @@
             <a href="#!email"><span class="white-text email">zeerakahmed@gmail.com</span></a>
           </div>
         </li>
-      </ul>
+      </ul>-->
+      <!--<a href="edit-user.html" class="button-collapse right"><i class="material-icons">person</i></a>-->
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a class="explore" href="#explore">Explore</a></li>
+          <li class="tab"><a href="#manage">Investments</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-
-  <div id="main" class="container">
-    <!--Own Projects-->
-    <h5 class="red-text text-accent-1">Your businesses</h1>
+  <!--Own Projects-->
+  <div id="manage" class="container">
+    <h5 class="red-text text-accent-1">Your investments</h1>
       <div id="own-projects">
       </div>
+  </div>
 
-      <!--Feed-->
-      <h5 class="red-text text-accent-1">Local businesses</h5>
-      <form>
-        <div class="input-field">
-          <input class="grey-text" id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-      <div class="row" id="projects">
-        <div class="col s12 m6">
+  <!--Feed-->
+  <div id="explore" class="container">
+    <h5 class="red-text text-accent-1">Local businesses</h5>
+    <form>
+      <div class="input-field">
+        <input class="grey-text" id="search" type="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+    <div class="row" id="projects">
+      <div class="col s12 m6">
+        <a href="project-page.html">
           <div class="card" id="soccer">
             <div class="card-image">
               <img src="img/soccercoaching.jpg">
               <span class="card-title">Krista's Soccer Camp</span>
               <a href="project-page.html" class="btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
             </div>
-            <div class="card-content">
-              <p>10% stake available of $150,000 valuation</p>
+            <div class="card-content black-text">
+              <h5><strong class="green-text">$2,342.23</strong> in sales last week</h5>
+              <div class="amber-text">
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star_half</i>
+                <i class="material-icons">star_border</i>
+                <p class="grey-text">*data from Square and Google Ratings</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col s12 m6">
+        </a>
+      </div>
+      <div class="col s12 m6">
+        <a href="project-page2.html">
           <div class="card" id="vegan">
             <div class="card-image">
               <img src="img/bakery.jpg">
               <span class="card-title">Honest Vegan Bakery</span>
               <a href="project-page2.html" class="btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
             </div>
-            <div class="card-content">
-              <p>20% stake available of $670,000 valuation</p>
+            <div class="card-content black-text">
+              <h5><strong class="green-text">$1,231.42</strong> in sales last week</h5>
+              <div class="amber-text">
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star_half</i>
+                <p class="grey-text">*data from Square and Google Ratings</p>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+    </div>
   </div>
+
   <script>
     var ProjectsHTML = "";
     if (localStorage.projects) {
       var projects = JSON.parse(localStorage.projects);
       for (var p in projects) {
-        var id = Math.ceil(Math.random()*1000);
-        var head = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-image"><img src="img/wallpaper.jpg"><a href="TEMPLATE-project-page.html" id='+id+' class="navbutton btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a></div><div class="card-content"><span class="card-title">';
+        var id = Math.ceil(Math.random() * 1000);
+        var head = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-image"><img src="img/wallpaper.jpg"><a href="TEMPLATE-project-page.html" id=' + id + ' class="navbutton btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a></div><div class="card-content"><span class="card-title">';
         var foot = '</span></div></div></div></div></div>';
         ProjectsHTML += head + projects[p].name + foot;
-        projects[p].id = id 
+        projects[p].id = id
         projects['id'] = id
       }
       localStorage.projects = JSON.stringify(projects)
       $("#own-projects").html(ProjectsHTML);
     }
     else {
-      var noProjectsHTML = '<p>No projects right now, create one!</p>';
+      var noProjectsHTML = "<p>This is where you'll find businesses you've funded!</p>";
       $("#own-projects").html(noProjectsHTML);
     }
-    $(".navbutton").click(function(event){
+    $(".navbutton").click(function (event) {
       event.preventDefault();
       id = $(this).attr("id")
       localStorage.id = id

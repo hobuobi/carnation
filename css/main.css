@@ -31,9 +31,13 @@ body {
     overflow-x: hidden;
 }
 
-.tag {
+.success {
+    left: 24em;
+}
+
+/*.tag {
     padding: 5px;
     border-radius: 10px;
     font-size: 10px;
     margin: 0px 3px;
-}
+}*/
