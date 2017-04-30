@@ -36,12 +36,13 @@
   </div>
   <div class="section white">
     <div class="row container">
-      <h4 id="name" class="header red-text lighten-1">{{ NAME }}</h4>
-      <h5 class="header"><span id="available" class="green-text"><b>{{ available }}</b></span> of <span id="valuation" class="green-text lighten-1">${{ valuation }} valuation</span></h5>
+      <h4 id="name" class="header red-text lighten-1">[NAME]</h4>
+      <span class="green-text"><h5><b id="available">[AVAILABLE]</b> stake available</h5></span>
       <div id="tags">
         <strong>TAGS:</strong>
       </div>
-      <p id="description" class="grey-text text-darken-3 lighten-3">{{ DESCRIPTION }}</p>
+      <p><i class="material-icons">location_on</i><strong id="loc">[LOCATION]</strong></p>
+      <p id="description" class="grey-text text-darken-2">[DESCRIPTION]</p>
       <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
       <ul class="collection">
         <li class="collection-item grey lighten-3 dismissable avatar">
@@ -85,6 +86,8 @@
         var smallbiz = JSON.parse(localStorage.smallbiz);
         $('#name').html(smallbiz.name);
         $('#description').html(smallbiz.desc);
+        $('#available').html(smallbiz.available);
+        $('#loc').html(smallbiz.loc);
         $.each(smallbiz.tags, function (index, val) {
           $("#tags").append("<div class='chip'>" + val + "</div>")
         });

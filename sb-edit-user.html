@@ -39,30 +39,30 @@
     </div>
 
     <div class="row">
+      <div class="input-field col s7">
+        <i class="material-icons prefix">email</i>
+        <input id="email" value="karenherself@auntiek.com" type="email" class="validate">
+        <label id="email-label" for="email">E-Mail address</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">phone</i>
+        <input id="phone" value="(508) 617-2341" type="tel" class="validate">
+        <label id="phone-label" for="phone">Telephone</label>
+      </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
         <input id="name" value="Auntie Karen's Vegan Bakery" type="text" class="validate">
         <label id="name-label" for="name">Name of Business</label>
       </div>
       <div class="input-field col s12">
-        <i class="material-icons prefix">email</i>
-        <input id="email" value="karenherself@auntiek.com" type="email" class="validate">
-        <label id="email-label" for="email">E-Mail address</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">phone</i>
-        <input id="phone" value="(508) 617-2341" type="tel" class="validate">
-        <label id="phone-label" for="phone">Telephone</label>
+        <i class="material-icons prefix">attach_money</i>
+        <input id="available" value="15% ($23,000)" type="text" class="validate">
+        <label id="available-label" for="available">Available Stake</label>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">edit_location</i>
         <input id="loc" value="1396 East Main Street, Westworld, AK" type="tel" class="validate">
         <label id="loc-label" for="loc">Location</label>
-      </div>
-      <div class="input-field col s12">
-        <i class="material-icons prefix">mode_comment</i>
-        <textarea id="desc" class="materialize-textarea"></textarea>
-        <label id="desc-label" for="desc">Description</label>
       </div>
       <div style="text-align: left;" class="input-field col s12">
         <i class="material-icons prefix">label</i>
@@ -70,6 +70,11 @@
           <div id="tags-html"></div>
         </div>
         <label id="tags-label" for="tags">Tags</label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">mode_comment</i>
+        <textarea id="desc" class="materialize-textarea"></textarea>
+        <label id="desc-label" for="desc">Description</label>
       </div>
     </div>
   </div>
@@ -85,6 +90,7 @@
         $('#email').val(smallbiz.email);
         $('#loc').val(smallbiz.loc);
         $('#desc').val(smallbiz.desc);
+        $('#available').val(smallbiz.available);
         var tags = '';
         $.each(smallbiz.tags, function (index, val) {
           tags += '<div class="chip">' + val + '<i class="material-icons close">close</i></div>';
@@ -109,6 +115,7 @@
         email: $('#email').val(),
         loc: $('#loc').val(),
         desc: $('#desc').val(),
+        available: $('#available').val(),
         tags: _tags
       }
 

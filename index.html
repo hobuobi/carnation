@@ -36,7 +36,7 @@
         <input placeholder="Password" id="password" value="ilovethisteam" type="password" class="validate">
       </div>
     </div>
-    <a href="home-page.html" class="waves-effect waves-light red lighten-1 btn">Log In</a>
+    <a id="log-in" class="waves-effect waves-light red lighten-1 btn">Log In</a>
     <a id="sign-up" class="waves-effect waves-light red lighten-1 btn">Sign Up</a>
   </div>
 
@@ -52,10 +52,22 @@
       </div>
     </div>
   </div>
+
+  <div id="fail-modal" class="modal">
+    <div class="modal-content">
+      <p>Incorrect password!</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect btn-flat">okay</a>
+    </div>
+
   <script>
     $('.modal').modal();
     $('#sign-up').click(function () {
       $('#type-modal').modal('open');
+    });
+    $('#log-in').click(function () {
+      $('#fail-modal').modal('open');
     });
   </script>
 </body>
