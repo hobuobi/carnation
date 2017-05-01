@@ -24,62 +24,60 @@
 
 <body>
   <!--Nav-->
-  <nav class="red lighten-1">
+  <nav class="nav-extended red lighten-1">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Carnation</a>
       <a href="sb-edit-user.html" class="button-collapse"><i class="material-icons">edit</i></a>
     </div>
-  </nav>
-
-  <div id="cover-photo" class="parallax-container">
-    <div class="parallax"><img src="img/vegan-bakery.jpg"></div>
-  </div>
-  <div class="section white">
-    <div class="row container">
-      <h4 id="name" class="header red-text lighten-1">[NAME]</h4>
-      <span class="green-text"><h5><b id="available">[AVAILABLE]</b> stake available</h5></span>
-      <div id="tags">
-        <strong>TAGS:</strong>
-      </div>
-      <p><i class="material-icons">location_on</i><strong id="loc">[LOCATION]</strong></p>
-      <p id="description" class="grey-text text-darken-2">[DESCRIPTION]</p>
-      <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
-      <ul class="collection">
-        <li class="collection-item grey lighten-3 dismissable avatar">
-          <i class="material-icons circle red accent-1">priority_high</i>
-          <span class="title">JEROME</span>
-          <p>wants to take a <b>2%</b> stake in your company</p>
-          <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-          <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
-        </li>
-        <li class="collection-item grey lighten-3 dismissable avatar">
-          <i class="material-icons circle red accent-1">priority_high</i>
-          <span class="title">FLORA</span>
-          <p>wants to take a <b>3%</b> stake in your company</p>
-          <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-          <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
-        </li>
-        <li class="collection-item grey lighten-3 dismissable avatar">
-          <i class="material-icons circle red accent-1">priority_high</i>
-          <span class="title">GEORGIA</span>
-          <p>wants to take a <b>1%</b> stake in your company</p>
-          <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-          <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
-        </li>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#profile">Profile</a></li>
+        <li class="tab"><a href="#performance">Performance</a></li>
       </ul>
     </div>
+  </nav>
+
+  <div id="profile">
+    <div id="cover-photo" class="parallax-container">
+      <div class="parallax"><img src="img/vegan-bakery.jpg"></div>
+    </div>
+    <div class="section white">
+      <div class="row container">
+        <h4 id="name" class="header red-text lighten-1">[NAME]</h4>
+        <span class="green-text"><h5><b id="available">[AVAILABLE]</b> stake available</h5></span>
+        <div id="tags">
+          <strong>TAGS:</strong>
+        </div>
+        <p><i class="material-icons">location_on</i><strong id="loc">[LOCATION]</strong></p>
+        <p id="description" class="grey-text text-darken-2">[DESCRIPTION]</p>
+        <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
+        <ul class="collection">
+          <li class="collection-item grey lighten-3 dismissable avatar">
+            <i class="material-icons circle red accent-1">priority_high</i>
+            <span class="title">JEROME</span>
+            <p>wants to take a <b>2%</b> stake in your company</p>
+            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
+            <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
+          </li>
+          <li class="collection-item grey lighten-3 dismissable avatar">
+            <i class="material-icons circle red accent-1">priority_high</i>
+            <span class="title">ZEERAK</span>
+            <p>wants to take a <b>3%</b> stake in your company</p>
+            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
+            <a href="investor-profile.html" class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
+          </li>
+          <li class="collection-item grey lighten-3 dismissable avatar">
+            <i class="material-icons circle red accent-1">priority_high</i>
+            <span class="title">GEORGIA</span>
+            <p>wants to take a <b>1%</b> stake in your company</p>
+            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
+            <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
-  <!--Modal-->
-  <div id="success-modal" class="modal">
-    <div class="modal-content">
-      <h4>Congratulations!</h4>
-      <p>Your new investor will be notified of your acceptance of their request. We will exchange your e-mails for you.</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect btn red accent-1">Okay</a>
-    </div>
-  </div>
   <script>
     $(document).ready(function () {
       if (localStorage.smallbiz) {
@@ -92,11 +90,6 @@
           $("#tags").append("<div class='chip'>" + val + "</div>")
         });
       }
-    });
-
-    $('.modal').modal();
-    $('.success').click(function () {
-      $('#success-modal').modal('open');
     });
   </script>
 </body>

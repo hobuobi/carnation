@@ -26,15 +26,13 @@
   <nav>
     <div class="nav-wrapper red lighten-1">
       <a href="#" class="brand-logo">Carnation</a>
+      <a href="sb-home-page.html" class="button-collapse"><i class="material-icons">arrow_back</i></a>
     </div>
   </nav>
   <div class="container center">
     <div class="row">
       <br>
       <img width="100%" src="img/zeerak.jpg">
-      <label id="upload-propic" for="profile-picture" class="btn red lighten-2 col s4 offset-s4">Change Picture</label>
-      <!--<input type="file" style="visibility: hidden;" id="profile-picture" onchange="previewFile()">
-      <img class="col s6 offset-s3" src="" height="200px" width="300px">-->
       <br>
     </div>
 
@@ -59,11 +57,19 @@
     </div>
   </div>
   <div class="container">
-    <a href="#" class="btn red lighten-2">Upload Resume</a>
+    <a id="contact" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">email</i></a>
   </div>
-  <div class="container">
-    <a id="save-profile" href="home-page.html" class="right btn-floating btn-large waves-effect waves-light lighten-2 red"><i class="material-icons">arrow_forward</i></a>
+
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <h4>Congratulations!</h4>
+      <p>Let's contact that dude.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="sb-home-page.html" class="modal-action modal-close waves-effect btn red accent-1">Okay</a>
+    </div>
   </div>
+
   <script>
     $(document).ready(function () {
       if (localStorage.profile) {
@@ -80,40 +86,10 @@
       }
     });
 
-    $("#save-profile").click(function () {
-
-      var _tags = [];
-
-      $.each($(".chip"), function (index, val) {
-        var txt = val.textContent;
-        _tags.push(txt.substring(0, txt.length - 5)); //gets rid of the extra 'close' text at the end...
-      })
-
-      var profile = {
-        name: $("#name").val(),
-        phone: $('#phone').val(),
-        tags: _tags
-      }
-      localStorage.profile = JSON.stringify(profile)
+    $('.modal').modal();
+    $('#contact').click(function () {
+      $('#contact-modal').modal('open');
     });
-
-    // function previewFile() {
-    //   var preview = document.querySelector('img'); //selects the query named img
-    //   var file = document.querySelector('input[type=file]').files[0]; //sames as here
-    //   var reader = new FileReader();
-
-    //   reader.onloadend = function () {
-    //     preview.src = reader.result;
-    //   }
-
-    //   if (file) {
-    //     reader.readAsDataURL(file); //reads the data as a URL
-    //   } else {
-    //     preview.src = "";
-    //   }
-    // }
-
-    // previewFile();  //calls the function named previewFile()
   </script>
 </body>
 
