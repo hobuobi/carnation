@@ -27,24 +27,7 @@
   <nav class="nav-extended red lighten-1">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Carnation</a>
-      <!--<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">person</i></a>-->
       <a href="edit-user.html" class="button-collapse"><i class="material-icons">person</i></a>
-      <!--<a href="new-project.html" class="btn-floating btn-large halfway-fab waves-effect waves-light red accent-1">
-        <i class="material-icons">add</i>
-      </a>-->
-      <!--<ul id="slide-out" class="side-nav">
-        <li>
-          <div class="userView">
-            <div class="background">
-              <img src="img/wallpaper.jpg">
-            </div>
-            <a href="edit-user.html"><img class="circle" src="img/zeerak.jpg"></a>
-            <a href="#!name"><span class="white-text name">Zeerak</span></a>
-            <a href="#!email"><span class="white-text email">zeerakahmed@gmail.com</span></a>
-          </div>
-        </li>
-      </ul>-->
-      <!--<a href="edit-user.html" class="button-collapse right"><i class="material-icons">person</i></a>-->
       <div class="nav-content">
         <ul class="tabs tabs-transparent">
           <li class="tab"><a href="#explore">Explore</a></li>
@@ -58,6 +41,22 @@
   <div id="manage" class="container">
     <h5 class="red-text text-accent-1">Your investments</h1>
       <div id="own-projects">
+        <ul class="collection">
+          <li id="request" class="collection-item lighten-3 dismissable avatar">
+            <a href="project-page.html" class="black-text">
+              <i class="material-icons circle amber accent-2">access_time</i>
+              <p>You sent a funding request for a <b class="fundAmt">[AMT]</b> stake in <b class="sb-name">[SB-NAME]</b></p>
+              <p class="grey-text">Swipe to cancel. Tap for business info.</p>
+            </a>
+          </li>
+          <li id="accepted" class="collection-item lighten-3 dismissable avatar">
+            <a href="project-page.html" class="black-text">
+              <i class="material-icons circle green accent-2">attach_money</i>
+              <p>You have a <b class="fundAmt">[AMT]</b> stake in <b class="sb-name">[SB-NAME]</b></p>
+              <p class="grey-text">Swipe to sell stake. Tap for business info</p>
+            </a>
+          </li>
+        </ul>
       </div>
   </div>
 
@@ -76,8 +75,8 @@
         <a href="project-page.html">
           <div class="card" id="soccer">
             <div class="card-image">
-              <img src="img/soccercoaching.jpg">
-              <span class="card-title">Krista's Soccer Camp</span>
+              <img src="img/bakery.jpg">
+              <span class="card-title sb-name">[SB-NAME]</span>
               <a href="project-page.html" class="btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
             </div>
             <div class="card-content black-text">
@@ -86,7 +85,7 @@
                 <i class="material-icons">star</i>
                 <i class="material-icons">star</i>
                 <i class="material-icons">star</i>
-                <i class="material-icons">star_half</i>
+                <i class="material-icons">star</i>
                 <i class="material-icons">star_border</i>
                 <p class="grey-text">*data from Square and Google Ratings</p>
               </div>
@@ -98,8 +97,8 @@
         <a href="project-page2.html">
           <div class="card" id="vegan">
             <div class="card-image">
-              <img src="img/bakery.jpg">
-              <span class="card-title">Honest Vegan Bakery</span>
+              <img src="img/soccercoaching.jpg">
+              <span class="card-title">Sporto Equipment</span>
               <a href="project-page2.html" class="btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a>
             </div>
             <div class="card-content black-text">
@@ -121,29 +120,27 @@
 
   <script>
     var ProjectsHTML = "";
-    if (localStorage.projects) {
-      var projects = JSON.parse(localStorage.projects);
-      for (var p in projects) {
-        var id = Math.ceil(Math.random() * 1000);
-        var head = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-image"><img src="img/wallpaper.jpg"><a href="TEMPLATE-project-page.html" id=' + id + ' class="navbutton btn-floating halfway-fab waves-effect waves-light red accent-1"><i class="material-icons">keyboard_arrow_right</i></a></div><div class="card-content"><span class="card-title">';
-        var foot = '</span></div></div></div></div></div>';
-        ProjectsHTML += head + projects[p].name + foot;
-        projects[p].id = id
-        projects['id'] = id
+    if (localStorage.fundReq) {
+      var fundReq = JSON.parse(localStorage.fundReq);
+      $('#fundMsg').html(fundReq.fundMsg);
+      $('.fundAmt').html(fundReq.fundAmt);
+      if (fundReq.fundStatus) {
+        $('#request').hide();
       }
-      localStorage.projects = JSON.stringify(projects)
-      $("#own-projects").html(ProjectsHTML);
+      else {
+        $('#accepted').hide();
+      }
     }
     else {
       var noProjectsHTML = "<p>This is where you'll find businesses you've funded!</p>";
       $("#own-projects").html(noProjectsHTML);
     }
-    $(".navbutton").click(function (event) {
-      event.preventDefault();
-      id = $(this).attr("id")
-      localStorage.id = id
-      window.location.href = "TEMPLATE-project-page.html";
-    })
+
+    $(document).ready(function () {
+      if (localStorage.smallbiz) {
+        $('.sb-name').html(JSON.parse(localStorage.smallbiz).name);
+      }
+    });
   </script>
 </body>
 

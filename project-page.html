@@ -19,7 +19,13 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src="js/main.js"></script>
+  <style>
+    .collection .review {
+      border-bottom: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -40,16 +46,17 @@
   <!--Profile screen-->
   <div id="profile">
     <div id="cover-photo" class="parallax-container">
-      <div class="parallax"><img src="img/soccer.jpg"></div>
+      <div class="parallax"><img src="img/vegan-bakery.jpg"></div>
     </div>
     <div class="section white">
       <div class="row container">
-        <h4 class="header red-text lighten-1">Krista's Soccer Camp</h4>
-        <span class="green-text"><h5><b>11% ($16,500)</b> stake available</h5></span>
-        <p><i class="material-icons">location_on</i>23 Main Street, Wilmington, AZ</p>
-        <p class="grey-text text-darken-3 lighten-3">Krista's Soccer Camp has been educating and engaging the communities youth of all ages and genders for almost 15
-          years. Every year we run programs for around 300 athletes in the area. We are looking for investors to help us
-          expand geographically and advise us on increasing our profits.</p>
+        <h4 class="header red-text sb-name lighten-1">[SB-NAME]</h4>
+        <span class="green-text"><h5><b class="sb-available">[STAKE]</b> stake available</h5></span>
+        <div id="tags">
+          <strong>TAGS:</strong>
+        </div>
+        <p><i class="material-icons">location_on</i><span class="sb-loc">[LOC]</span></p>
+        <p class="grey-text text-darken-3 lighten-3 sb-desc">[DESC]</p>
         <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
         <ul class="collection">
           <li class="collection-item avatar">
@@ -82,49 +89,111 @@
 
   <!--Performance screen-->
   <div id="performance" class="container">
-    <h4 class="header red-text lighten-1">Krista's Soccer Camp</h4>
-    <span class="green-text"><h5><b>11% ($16,500)</b> stake available</h5></span>
-    <p><i class="material-icons">location_on</i>23 Main Street, Wilmington, AZ</p>
+    <h4 class="header red-text sb-name lighten-1">[SB-NAME]</h4>
+    <span class="green-text"><h5><b class="sb-available">[STAKE]</b> stake available</h5></span>
+    <p><i class="material-icons">location_on</i><span class="sb-loc">[LOC]</span></p>
+    <canvas id="perfChart" width="100%"></canvas>
+    <img width="100%" src="img/reviews.png">
+    <ul style="border: none;" class="collection">
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"Honestly just so delicious like I don't even what like woah."</span>
+      </li>
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"Is there a better vegan bakery in the world?! Literally who knows!?"</span>
+      </li>
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"HOLY CANNOLI I LOVE AUNTIE K"</span>
+      </li>
+    </ul>
   </div>
 
   <!--Investment screen Modal-->
   <div id="fund-modal" class="modal">
     <div class="modal-content">
-      <p>What stake of the company are you interested in?</p>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="project-name" type="text" class="validate">
-          <label for="project-name">E.g. 10%</label>
-        </div>
-      </div>
-      <p>What skills/experiences can you bring to the team as a coach?</p>
+      <p>What stake <span class="sb-name"></span> are you interested in?</p>
       <div class="row">
         <div class="input-field col s12">
-          <div id="tags" class="chips chips-autocomplete"></div>
-          <label for="tags">Skills</label>
+          <input id="fundAmt" type="text" class="validate">
+          <label for="fundAmt">Maximum <b class="sb-available">10%</b></label>
         </div>
       </div>
-      </form>
       <p> Would you like to say anything else to the project owner?</p>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="description" class="materialize-textarea validate"></textarea>
-          <label for="description">Message</label>
+          <textarea id="fundMsg" class="materialize-textarea validate"></textarea>
+          <label for="fundMsg">Message</label>
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <div class="row">
-        <a class="col s12 btn teal lighten-3 waves-effect waves-light" id="mailLink">Contact Company<i class="material-icons right">send</i></a>
-        <a class="col s12 btn red accent-1 waves-effect waves-light" type="submit" name="action">Submit your funding request<i class="material-icons right">attach_money</i></a>
+        <a class="modal-action modal-close col s12 btn teal lighten-3 waves-effect waves-light" id="contact">Contact Company<i class="material-icons right">send</i></a>
       </div>
     </div>
   </div>
 
   <script>
+    $(document).ready(function () {
+      if (localStorage.smallbiz) {
+        var smallbiz = JSON.parse(localStorage.smallbiz)
+        $('.sb-name').html(smallbiz.name);
+        $('.sb-loc').html(smallbiz.loc);
+        $('.sb-desc').html(smallbiz.desc);
+        $('.sb-available').html(smallbiz.available);
+        $.each(smallbiz.tags, function (index, val) {
+          $("#tags").append("<div class='chip'>" + val + "</div>")
+        });
+      }
+    });
     $('.modal').modal();
     $('#fund').click(function () {
       $('#fund-modal').modal('open');
+    });
+
+    $("#contact").click(function () {
+
+      var fundReq = {
+        fundAmt: $("#fundAmt").val(),
+        fundMsg: $('#fundMsg').val(),
+        fundStatus: false
+      }
+      localStorage.fundReq = JSON.stringify(fundReq);
+      Materialize.toast('Message delivered!', 4000);
+    });
+
+    var ctx = $("#perfChart");
+    var data = {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      datasets: [
+        {
+          label: "Monthly Earnings (Thousands)",
+          fill: false,
+          lineTension: 0.3,
+          backgroundColor: "rgba(76,175,80,1)",
+          borderColor: "rgba(76,175,80,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(76,175,80,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(76,175,80,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 2,
+          pointHitRadius: 10,
+          data: [7.3, 6.8, 7.6, 6.4, 7.5, 7.6, 8.0, 8.6, 7.7, 7.5, 7.9, 8.8],
+          spanGaps: false,
+        }
+      ]
+    };
+    var perfChart = Chart.Line(ctx, {
+      data: data
     });
   </script>
 </body>

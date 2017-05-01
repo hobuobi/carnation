@@ -19,7 +19,14 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src="js/main.js"></script>
+
+  <style>
+    .collection .review {
+      border-bottom: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,37 +50,81 @@
     </div>
     <div class="section white">
       <div class="row container">
-        <h4 id="name" class="header red-text lighten-1">[NAME]</h4>
-        <span class="green-text"><h5><b id="available">[AVAILABLE]</b> stake available</h5></span>
+        <h4 class="header red-text lighten-1 sb-name">[NAME]</h4>
+        <span class="green-text"><h5><b class="sb-available">[AVAILABLE]</b> stake available</h5></span>
         <div id="tags">
           <strong>TAGS:</strong>
         </div>
-        <p><i class="material-icons">location_on</i><strong id="loc">[LOCATION]</strong></p>
+        <p><i class="material-icons">location_on</i><strong class="sb-loc">[LOCATION]</strong></p>
         <p id="description" class="grey-text text-darken-2">[DESCRIPTION]</p>
+        <!--Activity Feed-->
         <h5 class="red-text lighten-1">ACTIVITY FEED</h5>
         <ul class="collection">
-          <li class="collection-item grey lighten-3 dismissable avatar">
-            <i class="material-icons circle red accent-1">priority_high</i>
-            <span class="title">JEROME</span>
-            <p>wants to take a <b>2%</b> stake in your company</p>
-            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-            <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
+          <li id="request" class="collection-item grey lighten-3 dismissable avatar">
+            <a id="investorInfo" class="black-text">
+              <i class="material-icons circle red accent-2">priority_high</i>
+              <span class="title investorName">[NAME]</span>
+              <p>wants to take a <b class="fundAmt">[AMT]</b> stake in your company</p>
+              <p class="grey-text">Swipe to dismiss. Tap for more info.</p>
+            </a>
           </li>
-          <li class="collection-item grey lighten-3 dismissable avatar">
-            <i class="material-icons circle red accent-1">priority_high</i>
-            <span class="title">ZEERAK</span>
-            <p>wants to take a <b>3%</b> stake in your company</p>
-            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-            <a href="investor-profile.html" class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
-          </li>
-          <li class="collection-item grey lighten-3 dismissable avatar">
-            <i class="material-icons circle red accent-1">priority_high</i>
-            <span class="title">GEORGIA</span>
-            <p>wants to take a <b>1%</b> stake in your company</p>
-            <p class="grey-text">Only you can see this. Swipe to dismiss.</p>
-            <a class="success secondary-content green-text text-lighten-2"><i class="material-icons">email</i></a>
+          <li id="accepted" class="collection-item lighten-3 avatar">
+            <a id="investorInfo" class="black-text">
+              <i class="material-icons circle green accent-2">attach_money</i>
+              <span class="title investorName">[NAME]</span>
+              <p>took a <b class="fundAmt">[AMT]</b> stake in your company</p>
+              <p class="grey-text">You are paying them dividends from Square.</p>
+            </a>
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--Performance screen-->
+  <div id="performance" class="container">
+    <h4 class="header red-text sb-name lighten-1">[SB-NAME]</h4>
+    <span class="green-text"><h5><b class="sb-available">[STAKE]</b> stake available</h5></span>
+    <p><i class="material-icons">location_on</i><span class="sb-loc">[LOC]</span></p>
+    <canvas id="perfChart" width="100%"></canvas>
+    <img width="100%" src="img/reviews.png">
+    <ul style="border: none;" class="collection">
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"Honestly just so delicious like I don't even what like woah."</span>
+      </li>
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"Is there a better vegan bakery in the world?! Literally who knows!?"</span>
+      </li>
+      <li class="review collection-item avatar">
+        <i class="material-icons circle">person</i>
+        <span class="title">"HOLY CANNOLI I LOVE AUNTIE K"</span>
+      </li>
+    </ul>
+  </div>
+
+  <!--Profile Modal-->
+  <div id="investor-modal" class="modal">
+    <div class="modal-content">
+      <div class="container">
+        <div class="row">
+          <img width="100%" src="img/zeerak.jpg">
+        </div>
+        <div class="row">
+          <i class="material-icons">account_circle</i>
+          <div class="investorName"></div>
+          <i class="material-icons">phone</i>
+          <div id="investorPhone"></div>
+          <i class="material-icons">label</i>
+          <div id="investorTags"></div>
+          <div id="fundMsg"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <a class="modal-action modal-close col s12 btn teal lighten-3 waves-effect waves-light" id="accept">Accept<i class="material-icons right">send</i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -82,14 +133,85 @@
     $(document).ready(function () {
       if (localStorage.smallbiz) {
         var smallbiz = JSON.parse(localStorage.smallbiz);
-        $('#name').html(smallbiz.name);
+        $('.sb-name').html(smallbiz.name);
         $('#description').html(smallbiz.desc);
-        $('#available').html(smallbiz.available);
-        $('#loc').html(smallbiz.loc);
+        $('.sb-available').html(smallbiz.available);
+        $('.sb-loc').html(smallbiz.loc);
         $.each(smallbiz.tags, function (index, val) {
           $("#tags").append("<div class='chip'>" + val + "</div>")
         });
       }
+      if (localStorage.fundReq) {
+        var fundReq = JSON.parse(localStorage.fundReq);
+        $('#fundMsg').html(fundReq.fundMsg);
+        $('.fundAmt').html(fundReq.fundAmt);
+        if (fundReq.fundStatus) {
+          $('#request').hide();
+        }
+        else {
+          $('#accepted').hide();
+        }
+      }
+      else {
+        $('#request').hide();
+        $('#accepted').hide();
+      }
+      if (localStorage.profile) {
+        var profile = JSON.parse(localStorage.profile);
+        $('.investorName').html(profile.name);
+        $('#investorPhone').html(profile.phone);
+        $.each(profile.tags, function (index, val) {
+          $("#investorTags").append("<div class='chip'>" + val + "</div>")
+        });
+      }
+    });
+
+    $('.modal').modal();
+    $('#investorInfo').click(function () {
+      $('#investor-modal').modal('open');
+    });
+
+    $('#accept').click(function () {
+      Materialize.toast('Funding accepted!', 4000);
+      if (localStorage.fundReq) {
+        fundReq = JSON.parse(localStorage.fundReq);
+        fundReq.fundStatus = true;
+        localStorage.fundReq = JSON.stringify(fundReq);
+      }
+      $('#request').hide();
+      $('#accepted').show();
+    });
+
+    var ctx = $("#perfChart");
+    var data = {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      datasets: [
+        {
+          label: "Monthly Earnings (Thousands)",
+          fill: false,
+          lineTension: 0.3,
+          backgroundColor: "rgba(76,175,80,1)",
+          borderColor: "rgba(76,175,80,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(76,175,80,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(76,175,80,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 2,
+          pointHitRadius: 10,
+          data: [7.3, 6.8, 7.6, 6.4, 7.5, 7.6, 8.0, 8.6, 7.7, 7.5, 7.9, 8.8],
+          spanGaps: false,
+        }
+      ]
+    };
+    var perfChart = Chart.Line(ctx, {
+      data: data
     });
   </script>
 </body>
