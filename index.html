@@ -61,15 +61,36 @@
       <a class="modal-action modal-close waves-effect btn-flat">okay</a>
     </div>
 
-  <script>
-    $('.modal').modal();
-    $('#sign-up').click(function () {
-      $('#type-modal').modal('open');
-    });
-    $('#log-in').click(function () {
-      $('#fail-modal').modal('open');
-    });
-  </script>
+    <script>
+      $('.modal').modal();
+      $('#sign-up').click(function () {
+        $('#type-modal').modal('open');
+      });
+      $('#log-in').click(function () {
+        $('#fail-modal').modal('open');
+      });
+
+      $(document).ready(function () {
+        if (!localStorage.smallbiz) {
+          var smallbiz = {
+            name: "Auntie K's Vegan Bakery",
+            phone: "(617) 231-4210",
+            email: "mskaren@auntiek.com",
+            loc: "1396 East Main Street, Westworld, AK",
+            desc: "You'll love my cakes!",
+            available: "10% ($90,000)"
+          }
+          localStorage.smallbiz = JSON.stringify(smallbiz);
+        }
+        if (!localStorage.profile) {
+          var profile = {
+            name: "Gandalf the Wise",
+            phone: "(617) 495-6161"
+          }
+          localStorage.profile = JSON.stringify(profile)
+        }
+      });
+    </script>
 </body>
 
 </html>
